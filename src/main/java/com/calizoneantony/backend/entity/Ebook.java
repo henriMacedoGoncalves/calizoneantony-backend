@@ -32,6 +32,9 @@ public class Ebook {
     @Column(name = "price", nullable = false)
     private Float price;
 
+    @Column(name = "folder_path", nullable = false)
+    private String folderPath;
+
     @OneToMany(mappedBy = "ebook")
     private List<EbookPage> ebookPages;
 }

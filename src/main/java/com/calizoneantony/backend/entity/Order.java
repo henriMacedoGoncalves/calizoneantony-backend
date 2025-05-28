@@ -42,11 +42,11 @@ public class Order {
     public void add(OrderItem item) {
 
         if (item != null) {
-            if (orderItemSet == null) {
-                orderItemSet = new HashSet<>();
+            if (this.orderItemSet == null) {
+                this.orderItemSet = new HashSet<>();
             }
 
-            orderItemSet.add(item);
+            this.orderItemSet.add(item);
             item.setOrder(this);
         }
     }

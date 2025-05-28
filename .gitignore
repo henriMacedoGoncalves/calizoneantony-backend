@@ -3,6 +3,7 @@ target/
 !../backend/calizoneantony-backend/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+TODO.md
 
 ### STS ###
 .apt_generated
