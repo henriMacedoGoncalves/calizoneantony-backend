@@ -37,4 +37,7 @@ public class Ebook {
 
     @OneToMany(mappedBy = "ebook")
     private List<EbookPage> ebookPages;
+
+    @Column(name = "description", columnDefinition = "TEXT", nullable = false)
+    private String description;
 }

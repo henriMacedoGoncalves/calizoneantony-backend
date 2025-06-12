@@ -20,6 +20,6 @@ public class EbookPage {
     @Column(name = "page_number")
     private Long pageNumber;
 
-    @Column(name = "html_content", nullable = false)
+    @Column(name = "html_content", columnDefinition = "TEXT", nullable = false)
     private String htmlContent;
 }
