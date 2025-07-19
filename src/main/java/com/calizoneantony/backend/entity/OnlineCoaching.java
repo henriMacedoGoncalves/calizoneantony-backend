@@ -9,7 +9,6 @@ import lombok.Data;
 public class OnlineCoaching {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "online_coaching_id")
     private Long id;
 
@@ -21,4 +20,7 @@ public class OnlineCoaching {
 
     @Column(name = "price", nullable = false)
     private Float price;
+
+    @Column(name = "folder_path", nullable = false)
+    private String folderPath;
 }

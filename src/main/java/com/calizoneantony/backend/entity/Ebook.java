@@ -14,7 +14,6 @@ import java.util.List;
 public class Ebook {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ebook_id")
     private Long id;
 
