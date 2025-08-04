@@ -18,32 +18,18 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
+    @Column(nullable = false, name = "okta_id")
+    private String oktaId;
+
     @Column(nullable = false, name = "email", length = 50)
     private String email;
 
-    @Column(nullable = false, name = "first_name", length = 50)
-    private String firstName;
-
-    @Column(name = "middle_name", length = 50)
-    private String middleName;
-
-    @Column(nullable = false, name = "last_name", length = 50)
-    private String lastName;
+    @Column(nullable = false, name = "name", length = 50)
+    private String name;
 
     @Column(name = "created_at")
     @CreationTimestamp
     private Date createdAt;
-
-    @Column(nullable = false, name = "password_", length = 50)
-    private String password;
-
-    // "GOOGLE", "LOCAL"
-    @Column(nullable = false, name = "provider", length = 50)
-    private String provider;
-
-    // User id from providers
-    @Column(nullable = false, name = "provider_id", length = 50)
-    private String providerId;
 
     @OneToMany(mappedBy = "user")
     private Set<Order> orders = new HashSet<>();
