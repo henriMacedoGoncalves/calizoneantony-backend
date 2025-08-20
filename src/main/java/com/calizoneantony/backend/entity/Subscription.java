@@ -1,19 +1,21 @@
 package com.calizoneantony.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Calendar;
 import java.util.Date;
 
 @Entity
 @Table(name = "subscription_")
-@Data
+@Getter
+@Setter
 public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subscription_id")
+    @Column(name = "id")
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -1,26 +1,28 @@
 package com.calizoneantony.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name="workout")
-@Data
+@Getter
+@Setter
 public class Workout {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "workout_id")
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
 
-    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title")
     private String title;
 
     @OneToMany(mappedBy = "workout")

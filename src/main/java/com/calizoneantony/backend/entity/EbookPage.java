@@ -1,16 +1,18 @@
 package com.calizoneantony.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "ebook_page")
-@Data
+@Getter
+@Setter
 public class EbookPage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ebook_page_id")
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
@@ -20,6 +22,6 @@ public class EbookPage {
     @Column(name = "page_number")
     private Long pageNumber;
 
-    @Column(name = "html_content", columnDefinition = "TEXT", nullable = false)
+    @Column(name = "html_content", columnDefinition = "TEXT")
     private String htmlContent;
 }

@@ -34,7 +34,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         HttpMethod[] putDeleteActions = {HttpMethod.PUT, HttpMethod.DELETE};
         HttpMethod[] deleteAction = {HttpMethod.DELETE};
 
-        disableHttpMethods(BillingAddress.class, config, putDeleteActions);
+        disableHttpMethods(Address.class, config, putDeleteActions);
         disableHttpMethods(Country.class, config, exceptGetActions);
         disableHttpMethods(Ebook.class, config, putDeleteActions);
         disableHttpMethods(EbookPage.class, config, putDeleteActions);

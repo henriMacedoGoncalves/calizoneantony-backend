@@ -1,24 +1,26 @@
 package com.calizoneantony.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="exercise")
-@Data
+@Getter
+@Setter
 public class Exercise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="exercise_id")
+    @Column(name="id")
     private Long id;
 
-    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "folder_path", nullable = false, length = 50)
+    @Column(name = "folder_path")
     private String folderPath;
 }

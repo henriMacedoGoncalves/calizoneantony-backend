@@ -1,7 +1,8 @@
 package com.calizoneantony.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
@@ -10,31 +11,29 @@ import java.util.Set;
 
 @Entity
 @Table(name="user_")
-@Data
+@Getter
+@Setter
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false, name = "okta_id")
-    private String oktaId;
-
-    @Column(nullable = false, name = "email", length = 50)
+    @Column(name = "email")
     private String email;
 
-    @Column(nullable = false, name = "name", length = 50)
-    private String name;
+    @Column(name = "full_name")
+    private String fullName;
 
     @Column(name = "created_at")
     @CreationTimestamp
     private Date createdAt;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Order> orders = new HashSet<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Workout> workouts = new HashSet<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
@@ -43,11 +42,12 @@ public class User {
     public void addOrder(Order order) {
 
         if(order != null) {
-            if(this.orders == null) {
-                this.orders = new HashSet<>();
+
+            if(orders == null) {
+                orders = new HashSet<>();
             }
 
-            this.orders.add(order);
+            orders.add(order);
             order.setUser(this);
         }
     }

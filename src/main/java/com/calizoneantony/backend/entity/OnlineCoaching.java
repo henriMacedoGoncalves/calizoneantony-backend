@@ -1,26 +1,30 @@
 package com.calizoneantony.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "online_coaching")
-@Data
+@Getter
+@Setter
 public class OnlineCoaching {
 
     @Id
-    @Column(name = "online_coaching_id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "duration_days", nullable = false)
-    private Integer durationDays;
+    @Column(name = "duration_days")
+    private int durationDays;
 
-    @Column(name = "price", nullable = false)
-    private Float price;
+    @Column(name = "price")
+    private BigDecimal price;
 
-    @Column(name = "folder_path", nullable = false)
+    @Column(name = "folder_path")
     private String folderPath;
 }

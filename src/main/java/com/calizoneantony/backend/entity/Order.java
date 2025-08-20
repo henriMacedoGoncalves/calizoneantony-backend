@@ -1,21 +1,25 @@
 package com.calizoneantony.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "order_")
-@Data
+@Getter
+@Setter
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
@@ -23,18 +27,19 @@ public class Order {
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "billing_address_id")
-    private BillingAddress billingAddress;
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
-    @Column(name = "tracking_number", nullable = false)
-    private String trackingNumber;
-
-    @Column(name = "price", nullable = false)
-    private Float price;
-
+    @Column(name="date_created")
     @CreationTimestamp
-    @Column(name = "order_date")
-    private Date orderDate;
+    private Date dateCreated;
+
+    @Column(name="last_updated")
+    @UpdateTimestamp
+    private Date lastUpdated;
+
+    @Column(name = "price")
+    private BigDecimal price;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private Set<OrderItem> orderItemSet = new HashSet<>();

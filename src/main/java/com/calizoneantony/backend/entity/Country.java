@@ -1,26 +1,30 @@
 package com.calizoneantony.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Table(name = "country")
-@Data
+@Getter
+@Setter
 public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "country_id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "code", nullable = false, length = 10)
+    @Column(name = "code")
     private String code;
 
     @OneToMany(mappedBy = "country")
+    @JsonIgnore
     private List<State> states;
 }
